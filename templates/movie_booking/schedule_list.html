@@ -1,0 +1,31 @@
+{% extends 'movie_booking/base.html' %}
+
+{% block title %}Schedules{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Schedules</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Theater</th>
+            <th>Date</th>
+            <th>Show Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for schedule in schedules %}
+        <tr>
+            <td>{{ schedule.movie.title }}</td>
+            <td>{{ schedule.theater.name }}</td>
+            <td>{{ schedule.date }}</td>
+            <td>{{ schedule.show_time }}</td>
+            <td>
+                <a href="{% url 'book_movie' schedule.id %}" class="btn btn-primary">Book Now</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

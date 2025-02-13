@@ -1,0 +1,16 @@
+{% extends 'movie_booking/base.html' %}
+
+{% block title %}Theaters{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Theaters</h1>
+<ul class="list-group">
+    {% for theater in theaters %}
+    <li class="list-group-item">
+        <h5>{{ theater.name }}</h5>
+        <p>Location: {{ theater.location }}</p>
+        <p>Capacity: {{ theater.seating_capacity }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

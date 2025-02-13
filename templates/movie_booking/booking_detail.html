@@ -1,0 +1,13 @@
+{% extends 'movie_booking/base.html' %}
+
+{% block title %}Booking Details{% endblock %}
+
+{% block content %}
+<h1>Booking Details</h1>
+<p><strong>Movie:</strong> {{ booking.schedule.movie.title }}</p>
+<p><strong>Theater:</strong> {{ booking.schedule.theater.name }}</p>
+<p><strong>Date:</strong> {{ booking.schedule.date }}</p>
+<p><strong>Show Time:</strong> {{ booking.schedule.show_time }}</p>
+<p><strong>Seats:</strong> {{ booking.seat_numbers }}</p>
+<p><strong>Total Cost:</strong> ${{ booking.total_cost }}</p>
+{% endblock %}

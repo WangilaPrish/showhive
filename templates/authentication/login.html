@@ -1,0 +1,43 @@
+{% extends 'movie_booking/base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+        <div class="card shadow-sm p-4" style="max-width: 100%; border-radius: 15px;">
+            <h2 class="text-center mb-4" style="color: #8B0000;">Sign In</h2>
+
+            <!-- Show error message if it exists -->
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_username">Email:</label>
+                    <input type="email" name="username" id="id_username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="id_password">Password:</label>
+                    <input type="password" name="password" id="id_password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+
+            <!-- Link to Registration Page -->
+            <p class="mt-3 text-center">
+                Don't have an account? <a href="{% url 'register' %}" class="btn btn-link" style="color: crimson;">Sign Up</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

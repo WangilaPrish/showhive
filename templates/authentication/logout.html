@@ -1,0 +1,8 @@
+{% extends 'movie_booking/base.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+<h2>You have successfully logged out.</h2>
+<a href="{% url 'login' %}" class="btn btn-primary">Log in again</a>
+{% endblock %}

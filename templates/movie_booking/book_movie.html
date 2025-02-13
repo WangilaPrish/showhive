@@ -1,0 +1,27 @@
+{% extends 'movie_booking/base.html' %}
+
+{% block title %}Book Movie{% endblock %}
+
+{% block content %}
+<h1>Book Tickets for {{ schedule.movie.title }}</h1>
+<p>Theater: {{ schedule.theater.name }}</p>
+<p>Date: {{ schedule.date }}</p>
+<p>Show Time: {{ schedule.show_time }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="seating-chart">
+        {% for seat in available_seats %}
+        <label style="display: inline-block; margin: 5px;">
+            <input type="checkbox" name="seats" value="{{ seat }}">
+            {{ seat }}
+        </label>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Book Now</button>
+</form>
+
+<h4 class="mt-4">Booked Seats:</h4>
+<p>{{ booked_seats }}</p>
+{% endblock %}

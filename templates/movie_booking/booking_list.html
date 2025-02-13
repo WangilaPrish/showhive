@@ -1,0 +1,42 @@
+{% extends 'movie_booking/base.html' %}
+
+{% block title %}My Bookings{% endblock %}
+
+{% block content %}
+<h1 class="text-center">My Bookings</h1>
+
+{% if bookings %}
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Movie</th>
+                <th>Theater</th>
+                <th>Date</th>
+                <th>Show Time</th>
+                <th>Seats</th>
+                <th>Booking Date</th>
+                <th>Total Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ booking.schedule.movie.title }}</td>
+                <td>{{ booking.schedule.theater.name }}</td>
+                <td>{{ booking.schedule.date }}</td>
+                <td>{{ booking.schedule.show_time }}</td>
+                <td>
+                    {{ booking.seat_numbers|join:", " }}
+                </td>
+                <td>{{ booking.booking_date }}</td>
+                <td>${{ booking.total_cost }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="text-center">You have no bookings yet. <a href="/movies/" class="btn btn-primary">Book Now</a></p>
+{% endif %}
+{% endblock %}
